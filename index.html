@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trade Show Accommodation Comparison</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/tabler-icons.min.css">
     <style>
         * {
             margin: 0;
@@ -39,32 +38,14 @@
             font-size: 14px;
         }
         
-        .tabs {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .tab-button {
-            padding: 10px 18px;
-            background: white;
-            border: 1px solid #ddd;
+        .info-banner {
+            background: #e7f3ff;
+            border: 1px solid #b3d9ff;
             border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-        
-        .tab-button.active {
-            background: #007bff;
-            color: white;
-            border-color: #007bff;
-        }
-        
-        .tab-button:hover {
-            border-color: #007bff;
+            padding: 12px 16px;
+            margin-bottom: 1.5rem;
+            font-size: 13px;
+            color: #0056b3;
         }
         
         .card {
@@ -77,9 +58,6 @@
         }
         
         .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
             margin-bottom: 1.5rem;
         }
         
@@ -99,25 +77,15 @@
             text-decoration: underline;
         }
         
-        .score-box {
-            text-align: right;
-        }
-        
-        .score-box .label {
+        .rated-badge {
+            display: inline-block;
+            background: #d4edda;
+            color: #155724;
+            padding: 4px 10px;
+            border-radius: 12px;
             font-size: 12px;
-            color: #999;
-            margin-bottom: 4px;
-        }
-        
-        .score-box .score {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-        
-        .score-box .count {
-            font-size: 12px;
-            color: #999;
+            font-weight: 600;
+            margin-left: 8px;
         }
         
         .info-grid {
@@ -204,8 +172,8 @@
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             background: #007bff;
             cursor: pointer;
@@ -213,8 +181,8 @@
         }
         
         input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             background: #007bff;
             cursor: pointer;
@@ -230,20 +198,20 @@
         }
         
         .slider-value .score {
-            font-size: 18px;
+            font-size: 24px;
             font-weight: 700;
             color: #007bff;
         }
         
         .submit-button {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             background: #007bff;
             color: white;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             transition: background 0.2s;
         }
@@ -252,11 +220,17 @@
             background: #0056b3;
         }
         
+        .submit-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
         .navigation {
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 12px;
+            margin-bottom: 2rem;
         }
         
         .nav-button {
@@ -282,91 +256,41 @@
             text-align: center;
         }
         
-        .summary-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px;
-            background: white;
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 12px;
             border-radius: 8px;
-            border: 1px solid #e0e0e0;
-            transition: all 0.2s;
-        }
-        
-        .summary-item:hover {
-            border-color: #007bff;
-            box-shadow: 0 1px 4px rgba(0,123,255,0.1);
-        }
-        
-        .summary-item-name {
-            font-size: 15px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 14px;
             font-weight: 600;
-            margin-bottom: 4px;
-        }
-        
-        .summary-item-meta {
-            font-size: 12px;
-            color: #999;
-        }
-        
-        .summary-score {
-            font-size: 24px;
-            font-weight: 700;
-            color: #007bff;
-            text-align: right;
-        }
-        
-        .hidden {
             display: none;
         }
         
-        .ratings-breakdown {
-            margin-top: 2rem;
-        }
-        
-        .breakdown-section {
-            margin-bottom: 1.5rem;
-        }
-        
-        .breakdown-title {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #333;
-        }
-        
-        .rating-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        
-        .rating-pill {
-            padding: 8px 14px;
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #007bff;
-        }
-        
-        .no-ratings {
-            font-size: 13px;
-            color: #ccc;
-            font-style: italic;
-        }
-
-        h3 {
-            font-size: 16px;
-            font-weight: 600;
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 12px;
+            border-radius: 8px;
             margin-bottom: 1rem;
+            text-align: center;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .progress-bar {
+            background: #e0e0e0;
+            height: 6px;
+            border-radius: 3px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: #007bff;
+            height: 100%;
+            transition: width 0.3s;
         }
     </style>
 </head>
@@ -377,90 +301,75 @@
             <p>Accommodation Comparison & Ratings</p>
         </div>
         
-        <div class="tabs">
-            <button class="tab-button active" onclick="switchTab('rate')">Rate properties</button>
-            <button class="tab-button" onclick="switchTab('summary')">Summary & scores</button>
+        <div class="info-banner">
+            ℹ️ Rate each property 1-10 based on whatever matters to you. All ratings are anonymous.
         </div>
         
-        <div id="rate-view">
-            <div class="card">
-                <div class="card-header">
-                    <div>
-                        <h2 id="prop-name">Loading...</h2>
-                        <a id="prop-link" href="#" target="_blank">View property →</a>
-                    </div>
-                    <div class="score-box">
-                        <div class="label">Current rating</div>
-                        <div class="score" id="current-score">-</div>
-                        <div class="count" id="rating-count">0 ratings</div>
-                    </div>
-                </div>
-                
-                <div class="info-grid">
-                    <div class="info-item">
-                        <div class="label">Cost</div>
-                        <div class="value" id="prop-cost">-</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="label">To Ascot Vale</div>
-                        <div class="value" id="prop-time">-</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="label">Bedrooms</div>
-                        <div class="value" id="prop-beds">-</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="label">Bathrooms</div>
-                        <div class="value" id="prop-baths">-</div>
-                    </div>
-                </div>
-                
-                <div class="section">
-                    <div class="section-label">Sleeping arrangements</div>
-                    <div class="section-content" id="prop-arrangement">-</div>
-                </div>
-                
-                <div class="notes-box">
-                    <div class="section-label">Notes</div>
-                    <div class="section-content" id="prop-notes">-</div>
-                </div>
-                
-                <div class="divider"></div>
-                
-                <div class="form-group">
-                    <div class="slider-value">
-                        <label>Your rating (1-10)</label>
-                        <span class="score" id="slider-value">5</span>
-                    </div>
-                    <input type="range" min="1" max="10" value="5" id="rating-slider" onchange="updateSliderValue(this.value)" oninput="updateSliderValue(this.value)">
-                </div>
-                
-                <button class="submit-button" onclick="submitRating()">Submit rating</button>
-            </div>
-            
-            <div class="navigation">
-                <button class="nav-button" onclick="previousProperty()">← Previous</button>
-                <span class="page-count"><span id="current-index">1</span> of <span id="total-count">7</span></span>
-                <button class="nav-button" onclick="nextProperty()">Next →</button>
-            </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
         </div>
         
-        <div id="summary-view" class="hidden">
-            <h3>All properties - average scores</h3>
-            <div class="summary-list" id="summary-list">
-                <!-- Populated by JS -->
+        <div id="success-message" class="success-message">✓ Rating submitted!</div>
+        <div id="error-message" class="error-message"></div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2><span id="prop-name">Loading...</span><span id="rated-badge" class="rated-badge" style="display: none;">✓ Rated</span></h2>
+                <a id="prop-link" href="#" target="_blank">View property listing →</a>
             </div>
             
-            <div class="ratings-breakdown">
-                <h3>Individual ratings breakdown</h3>
-                <div id="breakdown-list">
-                    <!-- Populated by JS -->
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="label">Cost</div>
+                    <div class="value" id="prop-cost">-</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">To Ascot Vale</div>
+                    <div class="value" id="prop-time">-</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">Bedrooms</div>
+                    <div class="value" id="prop-beds">-</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">Bathrooms</div>
+                    <div class="value" id="prop-baths">-</div>
                 </div>
             </div>
+            
+            <div class="section">
+                <div class="section-label">Sleeping arrangements</div>
+                <div class="section-content" id="prop-arrangement">-</div>
+            </div>
+            
+            <div class="notes-box">
+                <div class="section-label">Notes</div>
+                <div class="section-content" id="prop-notes">-</div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="form-group">
+                <div class="slider-value">
+                    <label>Your rating</label>
+                    <span class="score"><span id="slider-value">5</span>/10</span>
+                </div>
+                <input type="range" min="1" max="10" value="5" id="rating-slider" oninput="updateSliderValue(this.value)">
+            </div>
+            
+            <button class="submit-button" id="submit-btn" onclick="submitRating()">Submit rating</button>
+        </div>
+        
+        <div class="navigation">
+            <button class="nav-button" onclick="previousProperty()">← Previous</button>
+            <span class="page-count"><span id="current-index">1</span> of <span id="total-count">7</span></span>
+            <button class="nav-button" onclick="nextProperty()">Next →</button>
         </div>
     </div>
     
     <script>
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwfIoImgNv_97tBo7cDpDSkTKMFFlD39peC52b-MoHUaKrr7ECQEFCYfTRLeQxOm2mc3w/exec';
+        
         const accommodations = [
             {
                 id: 1,
@@ -471,9 +380,8 @@
                 sofa: 1,
                 bathrooms: "2.5",
                 timeToAscot: "12-28 min",
-                link: "https://www.airbnb.com.au/rooms/1707031398491513590?adults=3&check_in=2026-11-19&check_out=2026-11-23&search_mode=regular_search&source_impression_id=p3_1782283038_P3BRrnK-BiqfjSVm&previous_page_section_name=1000&federated_search_id=d4785def-a190-49c4-83e2-bb65b6105d1d",
-                notes: "Mid-range price, extra half bathroom",
-                ratings: []
+                link: "https://www.airbnb.com.au/rooms/1707031398491513590?adults=3&check_in=2026-11-19&check_out=2026-11-23",
+                notes: "Mid-range price, extra half bathroom"
             },
             {
                 id: 2,
@@ -484,9 +392,8 @@
                 sofa: 1,
                 bathrooms: "1",
                 timeToAscot: "10-22 min",
-                link: "https://www.airbnb.com.au/rooms/1670713854881844161?adults=3&check_in=2026-11-19&check_out=2026-11-23&search_mode=regular_search&source_impression_id=p3_1782283038_P3vLLH7tXvNPLRVS&previous_page_section_name=1000&federated_search_id=d4785def-a190-49c4-83e2-bb65b6105d1d",
-                notes: "Budget-friendly option, good access time",
-                ratings: []
+                link: "https://www.airbnb.com.au/rooms/1670713854881844161?adults=3&check_in=2026-11-19&check_out=2026-11-23",
+                notes: "Budget-friendly option, good access time"
             },
             {
                 id: 3,
@@ -497,9 +404,8 @@
                 sofa: 1,
                 bathrooms: "1",
                 timeToAscot: "10-18 min",
-                link: "https://www.airbnb.com.au/rooms/1620859876638082445?unique_share_id=d7724f79-f60f-4e31-8add-cf5375339713&viralityEntryPoint=1&s=76",
-                notes: "Shorter commute time to the grounds",
-                ratings: []
+                link: "https://www.airbnb.com.au/rooms/1620859876638082445",
+                notes: "Shorter commute time to the grounds"
             },
             {
                 id: 4,
@@ -510,9 +416,8 @@
                 sofa: "No",
                 bathrooms: "1",
                 timeToAscot: "12-22 min",
-                link: "https://www.airbnb.com.au/rooms/1581346685552688568?unique_share_id=9cf53ca9-808a-4a1c-b000-cc85135c27ce&viralityEntryPoint=1&s=76",
-                notes: "3 beds (no sofa), mid-range price",
-                ratings: []
+                link: "https://www.airbnb.com.au/rooms/1581346685552688568",
+                notes: "3 beds (no sofa), mid-range price"
             },
             {
                 id: 5,
@@ -523,9 +428,8 @@
                 sofa: "No",
                 bathrooms: "1",
                 timeToAscot: "10-22 min",
-                link: "https://www.airbnb.com.au/rooms/857988655853121592?adults=3&check_in=2026-11-19&check_out=2026-11-23&search_mode=regular_search&source_impression_id=p3_1782303174_P3UPpvF1qzkA50UR&previous_page_section_name=1000&federated_search_id=fcb1cc93-4453-4955-9bec-662e1b3cda58",
-                notes: "Premium option, 3 beds, reliable commute",
-                ratings: []
+                link: "https://www.airbnb.com.au/rooms/857988655853121592?adults=3&check_in=2026-11-19&check_out=2026-11-23",
+                notes: "Premium option, 3 beds, reliable commute"
             },
             {
                 id: 6,
@@ -536,9 +440,8 @@
                 sofa: "No",
                 bathrooms: "1",
                 timeToAscot: "9-16 min",
-                link: "https://www.airbnb.com.au/rooms/1640053589868086022?adults=3&check_in=2026-11-19&check_out=2026-11-23&search_mode=regular_search&source_impression_id=p3_1782303722_P3AV3YHkkNrnos-_&previous_page_section_name=1000&federated_search_id=3bc5818b-baf3-4439-8617-583e5863354c",
-                notes: "⭐ CLOSEST TO ASCOT VALE - 9-16 min, 3 beds",
-                ratings: []
+                link: "https://www.airbnb.com.au/rooms/1640053589868086022?adults=3&check_in=2026-11-19&check_out=2026-11-23",
+                notes: "⭐ CLOSEST TO ASCOT VALE - 9-16 min, 3 beds"
             },
             {
                 id: 7,
@@ -549,13 +452,13 @@
                 sofa: "No",
                 bathrooms: "2",
                 timeToAscot: "20-40 min",
-                link: "https://www.booking.com/hotel/au/churchill-lux-elegant-town-house.en-gb.html?label=gen173nr-10CAEoggI46AdIM1gEaA-IAQGYATO4AQfIAQzYAQPoAQH4AQGIAgGoAgG4AvSj79EGwAIB0gIkZDJmMjA5OTItZTRlZS00ODg2LWJiNDAtZjdmNTExMDE2ZDYz2AIB4AIB&aid=304142&ucfs=1&checkin=2026-11-19&checkout=2026-11-23&dest_id=-1562126&dest_type=city&group_adults=3&no_rooms=3&group_children=0&srpvid=f0385a0b697e04ed&srepoch=1782305612&matching_block_id=1136772601_402478815_0_0_0_887420&atlas_src=sr_iw_title",
-                notes: "Most space - 3 beds + 2 baths, but furthest from venue",
-                ratings: []
+                link: "https://www.booking.com/hotel/au/churchill-lux-elegant-town-house.en-gb.html",
+                notes: "Most space - 3 beds + 2 baths, but furthest from venue"
             }
         ];
         
         let currentIndex = 0;
+        let ratedProperties = new Set();
         
         function getCurrentProperty() {
             return accommodations[currentIndex];
@@ -563,9 +466,6 @@
         
         function updateDisplay() {
             const prop = getCurrentProperty();
-            const avgScore = prop.ratings.length > 0 
-                ? (prop.ratings.reduce((sum, r) => sum + r.score, 0) / prop.ratings.length).toFixed(1)
-                : "-";
             
             document.getElementById('prop-name').textContent = prop.name;
             document.getElementById('prop-link').href = prop.link;
@@ -574,8 +474,6 @@
             document.getElementById('prop-beds').textContent = prop.bedrooms;
             document.getElementById('prop-baths').textContent = prop.bathrooms;
             document.getElementById('prop-notes').textContent = prop.notes;
-            document.getElementById('current-score').textContent = avgScore;
-            document.getElementById('rating-count').textContent = prop.ratings.length + (prop.ratings.length === 1 ? " rating" : " ratings");
             document.getElementById('current-index').textContent = currentIndex + 1;
             
             let arrangement = prop.beds + (prop.beds === 1 ? " bed" : " beds");
@@ -587,19 +485,70 @@
             
             document.getElementById('rating-slider').value = 5;
             document.getElementById('slider-value').textContent = 5;
+            
+            const badge = document.getElementById('rated-badge');
+            if (ratedProperties.has(prop.id)) {
+                badge.style.display = 'inline-block';
+                document.getElementById('submit-btn').textContent = 'Update rating';
+            } else {
+                badge.style.display = 'none';
+                document.getElementById('submit-btn').textContent = 'Submit rating';
+            }
+            
+            const progress = (ratedProperties.size / accommodations.length) * 100;
+            document.getElementById('progress-fill').style.width = progress + '%';
+            
+            document.getElementById('success-message').style.display = 'none';
+            document.getElementById('error-message').style.display = 'none';
         }
         
         function updateSliderValue(value) {
             document.getElementById('slider-value').textContent = value;
         }
         
-        function submitRating() {
+        async function submitRating() {
             const score = parseInt(document.getElementById('rating-slider').value);
             const prop = getCurrentProperty();
-            prop.ratings.push({ score });
-            updateDisplay();
-            updateSummary();
-            alert('Rating submitted! Move to the next property.');
+            const submitBtn = document.getElementById('submit-btn');
+            const successMsg = document.getElementById('success-message');
+            const errorMsg = document.getElementById('error-message');
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            successMsg.style.display = 'none';
+            errorMsg.style.display = 'none';
+            
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        propertyName: prop.name,
+                        score: score
+                    })
+                });
+                
+                ratedProperties.add(prop.id);
+                successMsg.textContent = '✓ Rating submitted for ' + prop.name + '!';
+                successMsg.style.display = 'block';
+                
+                setTimeout(() => {
+                    if (ratedProperties.size < accommodations.length) {
+                        nextProperty();
+                    } else {
+                        successMsg.textContent = '🎉 All properties rated! Thank you!';
+                    }
+                }, 1000);
+                
+            } catch (error) {
+                errorMsg.textContent = 'Error submitting. Please check your connection and try again.';
+                errorMsg.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit rating';
+            }
         }
         
         function nextProperty() {
@@ -612,69 +561,7 @@
             updateDisplay();
         }
         
-        function switchTab(tab) {
-            const rateView = document.getElementById('rate-view');
-            const summaryView = document.getElementById('summary-view');
-            const buttons = document.querySelectorAll('.tab-button');
-            
-            buttons.forEach(btn => btn.classList.remove('active'));
-            
-            if (tab === 'rate') {
-                rateView.classList.remove('hidden');
-                summaryView.classList.add('hidden');
-                buttons[0].classList.add('active');
-            } else {
-                rateView.classList.add('hidden');
-                summaryView.classList.remove('hidden');
-                buttons[1].classList.add('active');
-                updateSummary();
-            }
-        }
-        
-        function updateSummary() {
-            const summaryList = document.getElementById('summary-list');
-            const breakdownList = document.getElementById('breakdown-list');
-            
-            summaryList.innerHTML = '';
-            breakdownList.innerHTML = '';
-            
-            accommodations.forEach(acc => {
-                const avgScore = acc.ratings.length > 0 
-                    ? (acc.ratings.reduce((sum, r) => sum + r.score, 0) / acc.ratings.length).toFixed(1)
-                    : "-";
-                
-                const summaryHTML = `
-                    <div class="summary-item">
-                        <div>
-                            <div class="summary-item-name">${acc.name}</div>
-                            <div class="summary-item-meta">${acc.cost} • ${acc.timeToAscot} • ${acc.ratings.length} rating${acc.ratings.length !== 1 ? 's' : ''}</div>
-                        </div>
-                        <div class="summary-score">${avgScore}/10</div>
-                    </div>
-                `;
-                summaryList.innerHTML += summaryHTML;
-                
-                let breakdownHTML = `
-                    <div class="breakdown-section">
-                        <div class="breakdown-title">${acc.name}</div>
-                `;
-                
-                if (acc.ratings.length === 0) {
-                    breakdownHTML += '<div class="no-ratings">No ratings yet</div>';
-                } else {
-                    breakdownHTML += '<div class="rating-pills">';
-                    acc.ratings.forEach(rating => {
-                        breakdownHTML += `<div class="rating-pill">${rating.score}/10</div>`;
-                    });
-                    breakdownHTML += '</div>';
-                }
-                
-                breakdownHTML += '</div>';
-                breakdownList.innerHTML += breakdownHTML;
-            });
-        }
-        
-        // Initialize
+        document.getElementById('total-count').textContent = accommodations.length;
         updateDisplay();
     </script>
 </body>
