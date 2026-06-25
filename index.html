@@ -5,293 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trade Show Accommodation Comparison</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: #f5f5f5;
-            color: #333;
-        }
-        
-        .container {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-        
-        .header {
-            margin-bottom: 2rem;
-        }
-        
-        .header h1 {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .header p {
-            color: #666;
-            font-size: 14px;
-        }
-        
-        .info-banner {
-            background: #e7f3ff;
-            border: 1px solid #b3d9ff;
-            border-radius: 8px;
-            padding: 12px 16px;
-            margin-bottom: 1.5rem;
-            font-size: 13px;
-            color: #0056b3;
-        }
-        
-        .card {
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        
-        .card-header {
-            margin-bottom: 1.5rem;
-        }
-        
-        .card-header h2 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        
-        .card-header a {
-            font-size: 13px;
-            color: #007bff;
-            text-decoration: none;
-        }
-        
-        .card-header a:hover {
-            text-decoration: underline;
-        }
-        
-        .rated-badge {
-            display: inline-block;
-            background: #d4edda;
-            color: #155724;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-left: 8px;
-        }
-        
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 12px;
-            margin-bottom: 1.5rem;
-        }
-        
-        .info-item {
-            background: #f9f9f9;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #f0f0f0;
-        }
-        
-        .info-item .label {
-            font-size: 11px;
-            color: #999;
-            margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .info-item .value {
-            font-size: 16px;
-            font-weight: 600;
-        }
-        
-        .section {
-            margin-bottom: 1.5rem;
-        }
-        
-        .section-label {
-            font-size: 12px;
-            color: #999;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .section-content {
-            font-size: 15px;
-            line-height: 1.6;
-            color: #333;
-        }
-        
-        .notes-box {
-            background: #f9f9f9;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #f0f0f0;
-            margin-bottom: 1.5rem;
-        }
-        
-        .divider {
-            border-top: 1px solid #e0e0e0;
-            padding-top: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            font-size: 12px;
-            color: #999;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        input[type="range"] {
-            width: 100%;
-            height: 6px;
-            border-radius: 3px;
-            background: #e0e0e0;
-            outline: none;
-            -webkit-appearance: none;
-        }
-        
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: #007bff;
-            cursor: pointer;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        input[type="range"]::-moz-range-thumb {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: #007bff;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        .slider-value {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-        
-        .slider-value .score {
-            font-size: 24px;
-            font-weight: 700;
-            color: #007bff;
-        }
-        
-        .submit-button {
-            width: 100%;
-            padding: 14px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
-        
-        .submit-button:hover:not(:disabled) {
-            background: #0056b3;
-        }
-        
-        .submit-button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-        
-        .navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 2rem;
-        }
-        
-        .nav-button {
-            padding: 10px 16px;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-        
-        .nav-button:hover {
-            border-color: #007bff;
-            color: #007bff;
-        }
-        
-        .page-count {
-            font-size: 13px;
-            color: #999;
-            flex: 1;
-            text-align: center;
-        }
-        
-        .success-message {
-            background: #d4edda;
-            color: #155724;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            text-align: center;
-            font-size: 14px;
-            font-weight: 600;
-            display: none;
-        }
-        
-        .error-message {
-            background: #f8d7da;
-            color: #721c24;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            text-align: center;
-            font-size: 14px;
-            display: none;
-        }
-        
-        .progress-bar {
-            background: #e0e0e0;
-            height: 6px;
-            border-radius: 3px;
-            margin-bottom: 1.5rem;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            background: #007bff;
-            height: 100%;
-            transition: width 0.3s;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; }
+        .container { max-width: 700px; margin: 0 auto; padding: 2rem 1rem; }
+        .header { margin-bottom: 2rem; }
+        .header h1 { font-size: 28px; font-weight: 600; margin-bottom: 0.5rem; }
+        .header p { color: #666; font-size: 14px; }
+        .info-banner { background: #e7f3ff; border: 1px solid #b3d9ff; border-radius: 8px; padding: 12px 16px; margin-bottom: 1.5rem; font-size: 13px; color: #0056b3; }
+        .card { background: white; border: 1px solid #e0e0e0; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .card-header { margin-bottom: 1.5rem; }
+        .card-header h2 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+        .card-header a { font-size: 13px; color: #007bff; text-decoration: none; }
+        .card-header a:hover { text-decoration: underline; }
+        .rated-badge { display: inline-block; background: #d4edda; color: #155724; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-left: 8px; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 1.5rem; }
+        .info-item { background: #f9f9f9; padding: 12px; border-radius: 8px; border: 1px solid #f0f0f0; }
+        .info-item .label { font-size: 11px; color: #999; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-item .value { font-size: 16px; font-weight: 600; }
+        .section { margin-bottom: 1.5rem; }
+        .section-label { font-size: 12px; color: #999; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .section-content { font-size: 15px; line-height: 1.6; color: #333; }
+        .notes-box { background: #f9f9f9; padding: 12px; border-radius: 8px; border: 1px solid #f0f0f0; margin-bottom: 1.5rem; }
+        .divider { border-top: 1px solid #e0e0e0; padding-top: 1.5rem; margin-bottom: 1.5rem; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; font-size: 12px; color: #999; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+        input[type="range"] { width: 100%; height: 6px; border-radius: 3px; background: #e0e0e0; outline: none; -webkit-appearance: none; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 24px; height: 24px; border-radius: 50%; background: #007bff; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        input[type="range"]::-moz-range-thumb { width: 24px; height: 24px; border-radius: 50%; background: #007bff; cursor: pointer; border: none; }
+        .slider-value { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .slider-value .score { font-size: 24px; font-weight: 700; color: #007bff; }
+        .submit-button { width: 100%; padding: 14px; background: #007bff; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 15px; font-weight: 600; }
+        .submit-button:hover { background: #0056b3; }
+        .navigation { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 2rem; }
+        .nav-button { padding: 10px 16px; background: white; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 500; }
+        .nav-button:hover { border-color: #007bff; color: #007bff; }
+        .page-count { font-size: 13px; color: #999; flex: 1; text-align: center; }
+        .success-message { background: #d4edda; color: #155724; padding: 12px; border-radius: 8px; margin-bottom: 1rem; text-align: center; font-size: 14px; font-weight: 600; display: none; }
+        .error-message { background: #f8d7da; color: #721c24; padding: 12px; border-radius: 8px; margin-bottom: 1rem; text-align: center; font-size: 14px; display: none; }
+        .progress-bar { background: #e0e0e0; height: 6px; border-radius: 3px; margin-bottom: 1.5rem; overflow: hidden; }
+        .progress-fill { background: #007bff; height: 100%; transition: width 0.3s; }
     </style>
 </head>
 <body>
@@ -319,22 +71,10 @@
             </div>
             
             <div class="info-grid">
-                <div class="info-item">
-                    <div class="label">Cost</div>
-                    <div class="value" id="prop-cost">-</div>
-                </div>
-                <div class="info-item">
-                    <div class="label">To Ascot Vale</div>
-                    <div class="value" id="prop-time">-</div>
-                </div>
-                <div class="info-item">
-                    <div class="label">Bedrooms</div>
-                    <div class="value" id="prop-beds">-</div>
-                </div>
-                <div class="info-item">
-                    <div class="label">Bathrooms</div>
-                    <div class="value" id="prop-baths">-</div>
-                </div>
+                <div class="info-item"><div class="label">Cost</div><div class="value" id="prop-cost">-</div></div>
+                <div class="info-item"><div class="label">To Ascot Vale</div><div class="value" id="prop-time">-</div></div>
+                <div class="info-item"><div class="label">Bedrooms</div><div class="value" id="prop-beds">-</div></div>
+                <div class="info-item"><div class="label">Bathrooms</div><div class="value" id="prop-baths">-</div></div>
             </div>
             
             <div class="section">
@@ -371,90 +111,13 @@
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwfIoImgNv_97tBo7cDpDSkTKMFFlD39peC52b-MoHUaKrr7ECQEFCYfTRLeQxOm2mc3w/exec';
         
         const accommodations = [
-            {
-                id: 1,
-                name: "Yarraville",
-                cost: "$831",
-                bedrooms: 2,
-                beds: 2,
-                sofa: 1,
-                bathrooms: "2.5",
-                timeToAscot: "12-28 min",
-                link: "https://www.airbnb.com.au/rooms/1707031398491513590?adults=3&check_in=2026-11-19&check_out=2026-11-23",
-                notes: "Mid-range price, extra half bathroom"
-            },
-            {
-                id: 2,
-                name: "Carlton",
-                cost: "$784.74",
-                bedrooms: 2,
-                beds: 2,
-                sofa: 1,
-                bathrooms: "1",
-                timeToAscot: "10-22 min",
-                link: "https://www.airbnb.com.au/rooms/1670713854881844161?adults=3&check_in=2026-11-19&check_out=2026-11-23",
-                notes: "Budget-friendly option, good access time"
-            },
-            {
-                id: 3,
-                name: "Carlton North",
-                cost: "$1056.54",
-                bedrooms: 2,
-                beds: 2,
-                sofa: 1,
-                bathrooms: "1",
-                timeToAscot: "10-18 min",
-                link: "https://www.airbnb.com.au/rooms/1620859876638082445",
-                notes: "Shorter commute time to the grounds"
-            },
-            {
-                id: 4,
-                name: "Fitzroy North",
-                cost: "$954.75",
-                bedrooms: 2,
-                beds: 3,
-                sofa: "No",
-                bathrooms: "1",
-                timeToAscot: "12-22 min",
-                link: "https://www.airbnb.com.au/rooms/1581346685552688568",
-                notes: "3 beds (no sofa), mid-range price"
-            },
-            {
-                id: 5,
-                name: "Carlton (Premium)",
-                cost: "$1220.70",
-                bedrooms: 2,
-                beds: 3,
-                sofa: "No",
-                bathrooms: "1",
-                timeToAscot: "10-22 min",
-                link: "https://www.airbnb.com.au/rooms/857988655853121592?adults=3&check_in=2026-11-19&check_out=2026-11-23",
-                notes: "Premium option, 3 beds, reliable commute"
-            },
-            {
-                id: 6,
-                name: "Parkville",
-                cost: "$1056.64",
-                bedrooms: 2,
-                beds: 3,
-                sofa: "No",
-                bathrooms: "1",
-                timeToAscot: "9-16 min",
-                link: "https://www.airbnb.com.au/rooms/1640053589868086022?adults=3&check_in=2026-11-19&check_out=2026-11-23",
-                notes: "⭐ CLOSEST TO ASCOT VALE - 9-16 min, 3 beds"
-            },
-            {
-                id: 7,
-                name: "Medway Golf Club",
-                cost: "$792",
-                bedrooms: 3,
-                beds: 3,
-                sofa: "No",
-                bathrooms: "2",
-                timeToAscot: "20-40 min",
-                link: "https://www.booking.com/hotel/au/churchill-lux-elegant-town-house.en-gb.html",
-                notes: "Most space - 3 beds + 2 baths, but furthest from venue"
-            }
+            { id: 1, name: "Yarraville", cost: "$831", bedrooms: 2, beds: 2, sofa: 1, bathrooms: "2.5", timeToAscot: "12-28 min", link: "https://www.airbnb.com.au/rooms/1707031398491513590", notes: "Mid-range price, extra half bathroom" },
+            { id: 2, name: "Carlton", cost: "$784.74", bedrooms: 2, beds: 2, sofa: 1, bathrooms: "1", timeToAscot: "10-22 min", link: "https://www.airbnb.com.au/rooms/1670713854881844161", notes: "Budget-friendly option, good access time" },
+            { id: 3, name: "Carlton North", cost: "$1056.54", bedrooms: 2, beds: 2, sofa: 1, bathrooms: "1", timeToAscot: "10-18 min", link: "https://www.airbnb.com.au/rooms/1620859876638082445", notes: "Shorter commute time to the grounds" },
+            { id: 4, name: "Fitzroy North", cost: "$954.75", bedrooms: 2, beds: 3, sofa: "No", bathrooms: "1", timeToAscot: "12-22 min", link: "https://www.airbnb.com.au/rooms/1581346685552688568", notes: "3 beds (no sofa), mid-range price" },
+            { id: 5, name: "Carlton (Premium)", cost: "$1220.70", bedrooms: 2, beds: 3, sofa: "No", bathrooms: "1", timeToAscot: "10-22 min", link: "https://www.airbnb.com.au/rooms/857988655853121592", notes: "Premium option, 3 beds, reliable commute" },
+            { id: 6, name: "Parkville", cost: "$1056.64", bedrooms: 2, beds: 3, sofa: "No", bathrooms: "1", timeToAscot: "9-16 min", link: "https://www.airbnb.com.au/rooms/1640053589868086022", notes: "CLOSEST TO ASCOT VALE - 9-16 min, 3 beds" },
+            { id: 7, name: "Medway Golf Club", cost: "$792", bedrooms: 3, beds: 3, sofa: "No", bathrooms: "2", timeToAscot: "20-40 min", link: "https://www.booking.com/hotel/au/churchill-lux-elegant-town-house.en-gb.html", notes: "Most space - 3 beds + 2 baths, but furthest from venue" }
         ];
         
         let currentIndex = 0;
@@ -478,7 +141,7 @@
             
             let arrangement = prop.beds + (prop.beds === 1 ? " bed" : " beds");
             if (prop.sofa && prop.sofa !== "No") {
-                arrangement += ` + ${prop.sofa} sofa`;
+                arrangement += " + " + prop.sofa + " sofa";
             }
             arrangement += " • Parking: Yes";
             document.getElementById('prop-arrangement').textContent = arrangement;
@@ -488,6 +151,7 @@
             
             const submitBtn = document.getElementById('submit-btn');
             submitBtn.disabled = false;
+            submitBtn.removeAttribute('disabled');
             
             const badge = document.getElementById('rated-badge');
             if (ratedProperties.has(prop.id)) {
@@ -509,51 +173,47 @@
             document.getElementById('slider-value').textContent = value;
         }
         
-        async function submitRating() {
+        function submitRating() {
             const score = parseInt(document.getElementById('rating-slider').value);
             const prop = getCurrentProperty();
-            const submitBtn = document.getElementById('submit-btn');
             const successMsg = document.getElementById('success-message');
             const errorMsg = document.getElementById('error-message');
             
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Submitting...';
             successMsg.style.display = 'none';
             errorMsg.style.display = 'none';
             
-            try {
-                await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        propertyName: prop.name,
-                        score: score
-                    })
-                });
-                
-                ratedProperties.add(prop.id);
-                successMsg.textContent = '✓ Rating submitted for ' + prop.name + '!';
-                successMsg.style.display = 'block';
-                
-                setTimeout(() => {
-                    submitBtn.disabled = false;
-                    if (ratedProperties.size < accommodations.length) {
-                        nextProperty();
-                    } else {
-                        successMsg.textContent = '🎉 All properties rated! Thank you!';
-                        submitBtn.textContent = 'Update rating';
-                    }
-                }, 1000);
-                
-            } catch (error) {
-                errorMsg.textContent = 'Error submitting. Please check your connection and try again.';
-                errorMsg.style.display = 'block';
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Submit rating';
-            }
+            // Fire and forget - send to Google Sheets in background
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    propertyName: prop.name,
+                    score: score
+                })
+            }).catch(err => console.log('Submit error:', err));
+            
+            // Immediately mark as rated
+            ratedProperties.add(prop.id);
+            successMsg.textContent = '✓ Rating submitted for ' + prop.name + '!';
+            successMsg.style.display = 'block';
+            
+            // Update progress bar
+            const progress = (ratedProperties.size / accommodations.length) * 100;
+            document.getElementById('progress-fill').style.width = progress + '%';
+            
+            // Update badge
+            document.getElementById('rated-badge').style.display = 'inline-block';
+            document.getElementById('submit-btn').textContent = 'Update rating';
+            
+            // Auto-advance after 1 second
+            setTimeout(function() {
+                if (ratedProperties.size < accommodations.length) {
+                    nextProperty();
+                } else {
+                    successMsg.textContent = '🎉 All properties rated! Thank you!';
+                }
+            }, 1000);
         }
         
         function nextProperty() {
