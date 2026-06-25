@@ -216,7 +216,7 @@
             transition: background 0.2s;
         }
         
-        .submit-button:hover {
+        .submit-button:hover:not(:disabled) {
             background: #0056b3;
         }
         
@@ -486,13 +486,16 @@
             document.getElementById('rating-slider').value = 5;
             document.getElementById('slider-value').textContent = 5;
             
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.disabled = false;
+            
             const badge = document.getElementById('rated-badge');
             if (ratedProperties.has(prop.id)) {
                 badge.style.display = 'inline-block';
-                document.getElementById('submit-btn').textContent = 'Update rating';
+                submitBtn.textContent = 'Update rating';
             } else {
                 badge.style.display = 'none';
-                document.getElementById('submit-btn').textContent = 'Submit rating';
+                submitBtn.textContent = 'Submit rating';
             }
             
             const progress = (ratedProperties.size / accommodations.length) * 100;
@@ -536,10 +539,12 @@
                 successMsg.style.display = 'block';
                 
                 setTimeout(() => {
+                    submitBtn.disabled = false;
                     if (ratedProperties.size < accommodations.length) {
                         nextProperty();
                     } else {
                         successMsg.textContent = '🎉 All properties rated! Thank you!';
+                        submitBtn.textContent = 'Update rating';
                     }
                 }, 1000);
                 
